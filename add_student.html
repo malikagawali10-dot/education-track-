@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add Student | EduTrack</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    height:72px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 7%;
+    border-bottom:1px solid #e5e7eb;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#1e3a8a;
+    font-size:21px;
+    font-weight:700;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:linear-gradient(135deg,#4f46e5,#2563eb);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#667085;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#4f46e5;
+}
+
+
+/* PAGE */
+
+.page{
+    min-height:calc(100vh - 72px);
+    padding:55px 7%;
+    display:flex;
+    justify-content:center;
+}
+
+
+/* FORM CARD */
+
+.form-card{
+    width:100%;
+    max-width:720px;
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:38px;
+    box-shadow:0 15px 40px rgba(15,23,42,.06);
+}
+
+
+.form-header{
+    margin-bottom:30px;
+}
+
+.form-header h1{
+    font-size:30px;
+}
+
+.form-header p{
+    margin-top:7px;
+    color:#7b8494;
+    font-size:14px;
+}
+
+
+/* FORM */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group.full{
+    grid-column:1 / -1;
+}
+
+label{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:#344054;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid #d9dee8;
+    border-radius:9px;
+    outline:none;
+    font-size:14px;
+    font-family:inherit;
+    background:white;
+}
+
+input:focus,
+select:focus{
+    border-color:#6366f1;
+    box-shadow:0 0 0 3px rgba(99,102,241,.1);
+}
+
+.helper{
+    margin-top:6px;
+    font-size:11px;
+    color:#98a2b3;
+}
+
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+}
+
+.cancel{
+    text-decoration:none;
+    padding:12px 20px;
+    border:1px solid #d9dee8;
+    border-radius:9px;
+    color:#475467;
+    font-size:13px;
+    font-weight:600;
+}
+
+.submit{
+    border:none;
+    background:#4f46e5;
+    color:white;
+    padding:12px 23px;
+    border-radius:9px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.submit:hover{
+    background:#4338ca;
+}
+
+
+/* INFO */
+
+.info{
+    margin-top:25px;
+    padding:15px;
+    border-radius:10px;
+    background:#eef2ff;
+    color:#4338ca;
+    font-size:12px;
+    line-height:1.6;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .page{
+        padding:25px 5%;
+    }
+
+    .form-card{
+        padding:25px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        EduTrack
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/students">
+            Students
+        </a>
+
+        <a href="/analytics">
+            Analytics
+        </a>
+
+        <a href="/topper">
+            Top Performer
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <div class="form-card">
+
+
+        <div class="form-header">
+
+            <h1>
+                Add New Student
+            </h1>
+
+            <p>
+                Enter the student's academic and personal information.
+            </p>
+
+        </div>
+
+
+
+        <form method="POST" action="/add">
+
+
+            <div class="form-grid">
+
+
+                <!-- ROLL -->
+
+                <div class="form-group">
+
+                    <label>
+                        Roll Number
+                    </label>
+
+                    <input
+                        type="text"
+                        name="roll"
+                        placeholder="Example: 101"
+                        required
+                    >
+
+                    <span class="helper">
+                        Enter a unique roll number.
+                    </span>
+
+                </div>
+
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label>
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter full name"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Age
+                    </label>
+
+                    <input
+                        type="number"
+                        name="age"
+                        min="1"
+                        max="100"
+                        placeholder="Enter age"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- COURSE -->
+
+                <div class="form-group">
+
+                    <label>
+                        Course
+                    </label>
+
+                    <select name="course" required>
+
+                        <option value="">
+                            Select Course
+                        </option>
+
+                        <option value="BBA(CA)">
+                            BBA(CA)
+                        </option>
+
+                        <option value="BCA">
+                            BCA
+                        </option>
+
+                        <option value="B.Sc Computer Science">
+                            B.Sc Computer Science
+                        </option>
+
+                        <option value="B.Com">
+                            B.Com
+                        </option>
+
+                        <option value="BA">
+                            BA
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- MARKS -->
+
+                <div class="form-group full">
+
+                    <label>
+                        Marks
+                    </label>
+
+                    <input
+                        type="number"
+                        name="marks"
+                        min="0"
+                        max="100"
+                        step="0.01"
+                        placeholder="Enter marks out of 100"
+                        required
+                    >
+
+                    <span class="helper">
+                        Enter marks between 0 and 100.
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="info">
+
+                💡 Student information will be saved
+                automatically in your student database file.
+
+            </div>
+
+
+
+            <div class="buttons">
+
+                <a
+                    href="/students"
+                    class="cancel"
+                >
+                    Cancel
+                </a>
+
+
+                <button
+                    type="submit"
+                    class="submit"
+                >
+                    Add Student →
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

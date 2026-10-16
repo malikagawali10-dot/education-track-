@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduTrack - Student Management</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f7f9fc;
+    color:#172033;
+}
+
+.navbar{
+    height:72px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    text-decoration:none;
+    color:#172033;
+    font-size:21px;
+    font-weight:bold;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#4f46e5;
+    color:white;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#667085;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#4f46e5;
+}
+
+.admin-btn{
+    background:#4f46e5;
+    color:white !important;
+    padding:11px 17px;
+    border-radius:8px;
+}
+
+.hero{
+    padding:90px 7%;
+    background:linear-gradient(135deg,#eef2ff,#f8fafc);
+}
+
+.hero-container{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:8px 13px;
+    border-radius:20px;
+
+    background:#e0e7ff;
+    color:#4338ca;
+
+    font-size:11px;
+    font-weight:bold;
+}
+
+.hero h1{
+    margin-top:20px;
+    font-size:52px;
+    line-height:1.1;
+}
+
+.hero h1 span{
+    color:#4f46e5;
+}
+
+.hero p{
+    margin-top:20px;
+    max-width:550px;
+
+    color:#667085;
+    line-height:1.8;
+    font-size:15px;
+}
+
+.buttons{
+    margin-top:30px;
+
+    display:flex;
+    gap:12px;
+}
+
+.primary{
+    background:#4f46e5;
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+    border-radius:8px;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+.secondary{
+    background:white;
+    color:#344054;
+
+    text-decoration:none;
+
+    padding:14px 22px;
+    border-radius:8px;
+
+    border:1px solid #d0d5dd;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+.dashboard{
+    background:white;
+    border:1px solid #e4e7ec;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #edf0f4;
+}
+
+.dashboard-header strong{
+    font-size:15px;
+}
+
+.online{
+    color:#16a34a;
+    font-size:12px;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+
+    margin-top:20px;
+}
+
+.stat{
+    padding:20px;
+    background:#f8fafc;
+
+    border-radius:12px;
+}
+
+.stat small{
+    color:#98a2b3;
+    font-size:10px;
+}
+
+.stat h2{
+    margin-top:7px;
+    font-size:25px;
+}
+
+.features{
+    padding:90px 7%;
+    background:white;
+}
+
+.heading{
+    text-align:center;
+    max-width:650px;
+    margin:auto;
+}
+
+.heading small{
+    color:#4f46e5;
+    font-weight:bold;
+}
+
+.heading h2{
+    margin-top:10px;
+    font-size:35px;
+}
+
+.heading p{
+    margin-top:10px;
+    color:#667085;
+    font-size:14px;
+}
+
+.cards{
+    max-width:1150px;
+    margin:50px auto 0;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    padding:28px;
+
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+
+    background:white;
+
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.icon{
+    width:48px;
+    height:48px;
+
+    background:#eef2ff;
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+}
+
+.card h3{
+    margin-top:18px;
+    font-size:17px;
+}
+
+.card p{
+    margin-top:9px;
+    color:#667085;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.about{
+    padding:90px 7%;
+    background:#f8fafc;
+}
+
+.about-container{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about h2{
+    margin-top:10px;
+    font-size:35px;
+}
+
+.about p{
+    margin-top:15px;
+    color:#667085;
+    line-height:1.8;
+    font-size:14px;
+}
+
+.about-box{
+    background:white;
+    padding:30px;
+
+    border:1px solid #e5e7eb;
+    border-radius:16px;
+}
+
+.about-box h3{
+    font-size:19px;
+}
+
+.count{
+    margin-top:25px;
+    background:#f8fafc;
+    padding:20px;
+    border-radius:12px;
+}
+
+.count strong{
+    font-size:28px;
+}
+
+.cta{
+    padding:80px 7%;
+}
+
+.cta-box{
+    max-width:1100px;
+    margin:auto;
+
+    text-align:center;
+
+    padding:55px;
+
+    border-radius:20px;
+
+    background:#312e81;
+    color:white;
+}
+
+.cta-box h2{
+    font-size:32px;
+}
+
+.cta-box p{
+    margin-top:10px;
+    color:#ddd6fe;
+}
+
+.cta-btn{
+    display:inline-block;
+
+    margin-top:25px;
+
+    background:white;
+    color:#3730a3;
+
+    padding:13px 22px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+footer{
+    background:#111827;
+    color:#9ca3af;
+
+    padding:45px 7%;
+}
+
+.footer{
+    max-width:1100px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:40px;
+}
+
+.footer h3,
+.footer h4{
+    color:white;
+}
+
+.footer p{
+    margin-top:12px;
+    font-size:12px;
+    line-height:1.7;
+}
+
+.footer a{
+    display:block;
+
+    margin-top:11px;
+
+    text-decoration:none;
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+.copyright{
+    max-width:1100px;
+    margin:30px auto 0;
+
+    padding-top:20px;
+
+    border-top:1px solid #273244;
+
+    font-size:11px;
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero-container,
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .footer{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav class="navbar">
+
+<a href="/" class="logo">
+
+<div class="logo-icon">
+🎓
+</div>
+
+EduTrack
+
+</a>
+
+
+<div class="nav-links">
+
+<a href="/">
+Home
+</a>
+
+<a href="#features">
+Features
+</a>
+
+<a href="/students">
+Students
+</a>
+
+<a href="/analytics">
+Analytics
+</a>
+
+<a href="/topper">
+Top Performer
+</a>
+
+<a href="/admin" class="admin-btn">
+Admin Portal
+</a>
+
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<div class="hero-container">
+
+
+<div>
+
+<span class="badge">
+SMART STUDENT MANAGEMENT
+</span>
+
+
+<h1>
+
+Manage Students.
+
+<span>
+Track Progress.
+</span>
+
+</h1>
+
+
+<p>
+
+EduTrack is a modern student management portal
+designed to simplify academic records, student
+information and performance tracking in one
+centralized platform.
+
+</p>
+
+
+<div class="buttons">
+
+<a href="/students" class="primary">
+Explore Students →
+</a>
+
+<a href="#features" class="secondary">
+Explore Features
+</a>
+
+</div>
+
+</div>
+
+
+<div class="dashboard">
+
+<div class="dashboard-header">
+
+<strong>
+Academic Dashboard
+</strong>
+
+<span class="online">
+● Online
+</span>
+
+</div>
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<small>
+TOTAL STUDENTS
+</small>
+
+<h2>
+{{ total }}
+</h2>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+TOP SCORE
+</small>
+
+<h2>
+{{ top_score }}
+</h2>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+AVERAGE MARKS
+</small>
+
+<h2>
+{{ "%.1f"|format(average) }}%
+</h2>
+
+</div>
+
+
+<div class="stat">
+
+<small>
+HIGHEST SCORE
+</small>
+
+<h2>
+{{ "%.1f"|format(highest) }}
+</h2>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="features" id="features">
+
+
+<div class="heading">
+
+<small>
+SMART FEATURES
+</small>
+
+<h2>
+Everything You Need
+</h2>
+
+<p>
+A simple and powerful platform for managing
+student information and academic performance.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">
+👨‍🎓
+</div>
+
+<h3>
+Student Management
+</h3>
+
+<p>
+Add, view and manage complete student records
+including roll number, course, age and marks.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📊
+</div>
+
+<h3>
+Academic Analytics
+</h3>
+
+<p>
+Understand student performance through marks,
+averages and academic statistics.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+🏆
+</div>
+
+<h3>
+Top Performer
+</h3>
+
+<p>
+Automatically identify the highest performing
+student based on academic marks.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📝
+</div>
+
+<h3>
+Digital Records
+</h3>
+
+<p>
+Keep student information organized digitally
+using a centralized record system.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+📈
+</div>
+
+<h3>
+Performance Tracking
+</h3>
+
+<p>
+Monitor academic performance and quickly
+understand overall student progress.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">
+⚙️
+</div>
+
+<h3>
+Admin Management
+</h3>
+
+<p>
+Manage student records and access important
+administrative information from one dashboard.
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="about">
+
+
+<div class="about-container">
+
+
+<div>
+
+<small style="color:#4f46e5;font-weight:bold;">
+ABOUT EDUTRACK
+</small>
+
+<h2>
+Digitalizing Student Management
+</h2>
+
+<p>
+
+EduTrack brings essential student management
+functions together in one easy-to-use platform.
+It reduces manual record keeping and makes
+academic information easier to access.
+
+</p>
+
+</div>
+
+
+<div class="about-box">
+
+<h3>
+Built for Modern Education
+</h3>
+
+<p>
+
+From student registration to performance
+analysis, EduTrack provides a structured
+digital environment for managing academic
+information efficiently.
+
+</p>
+
+
+<div class="count">
+
+<strong>
+{{ total }}
+</strong>
+
+<p>
+Students currently registered
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="cta">
+
+<div class="cta-box">
+
+<h2>
+Ready to Manage Your Students?
+</h2>
+
+<p>
+Access the student management portal
+and start managing academic records.
+</p>
+
+<a href="/students" class="cta-btn">
+Open Student Portal →
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<div class="footer">
+
+
+<div>
+
+<h3>
+🎓 EduTrack
+</h3>
+
+<p>
+A modern student management portal for
+organized academic records, performance
+tracking and administration.
+</p>
+
+</div>
+
+
+<div>
+
+<h4>
+Platform
+</h4>
+
+<a href="/">
+Home
+</a>
+
+<a href="/students">
+Students
+</a>
+
+<a href="/analytics">
+Analytics
+</a>
+
+</div>
+
+
+<div>
+
+<h4>
+Management
+</h4>
+
+<a href="/topper">
+Top Performer
+</a>
+
+<a href="/admin">
+Admin Portal
+</a>
+
+<a href="/add">
+Add Student
+</a>
+
+</div>
+
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 EduTrack — Student Management Portal
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Top Performer | EduTrack</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    height:72px;
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#1e3a8a;
+
+    font-size:21px;
+    font-weight:700;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:linear-gradient(
+        135deg,
+        #4f46e5,
+        #2563eb
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#667085;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#4f46e5;
+}
+
+
+/* PAGE */
+
+.page{
+    min-height:calc(100vh - 72px);
+
+    padding:55px 7%;
+}
+
+
+/* HEADER */
+
+.header{
+    text-align:center;
+}
+
+.header small{
+    color:#4f46e5;
+
+    font-weight:700;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+.header h1{
+    margin-top:8px;
+
+    font-size:36px;
+}
+
+.header p{
+    margin-top:8px;
+
+    color:#7b8494;
+
+    font-size:14px;
+}
+
+
+/* TOPPER CARD */
+
+.topper-card{
+
+    max-width:700px;
+
+    margin:40px auto 0;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 50px
+        rgba(15,23,42,.08);
+
+}
+
+
+/* TROPHY */
+
+.trophy{
+
+    width:90px;
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    background:#eef2ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:45px;
+}
+
+
+/* NAME */
+
+.topper-name{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:#1e3a8a;
+}
+
+.topper-label{
+
+    margin-top:5px;
+
+    color:#98a2b3;
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* DETAILS */
+
+.details{
+
+    margin-top:35px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:14px;
+}
+
+.detail{
+
+    background:#f8fafc;
+
+    padding:18px;
+
+    border-radius:12px;
+}
+
+.detail span{
+
+    display:block;
+
+    color:#98a2b3;
+
+    font-size:11px;
+
+}
+
+.detail strong{
+
+    display:block;
+
+    margin-top:7px;
+
+    font-size:18px;
+
+}
+
+
+/* SCORE */
+
+.score{
+
+    margin-top:30px;
+
+    padding:20px;
+
+    border-radius:12px;
+
+    background:#eef2ff;
+
+}
+
+.score span{
+
+    color:#6366f1;
+
+    font-size:12px;
+
+}
+
+.score strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#3730a3;
+
+    font-size:36px;
+
+}
+
+
+/* EMPTY */
+
+.empty{
+
+    max-width:600px;
+
+    margin:50px auto;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:16px;
+
+    padding:50px;
+
+    text-align:center;
+}
+
+.empty div{
+
+    font-size:45px;
+
+}
+
+.empty h2{
+
+    margin-top:12px;
+
+}
+
+.empty p{
+
+    margin-top:7px;
+
+    color:#98a2b3;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+    background:#111827;
+
+    color:#9ca3af;
+
+    padding:25px;
+
+    text-align:center;
+
+    font-size:12px;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .topper-card{
+        padding:30px 20px;
+    }
+
+    .details{
+        grid-template-columns:1fr;
+    }
+
+    .header h1{
+        font-size:30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        EduTrack
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/students">
+            Students
+        </a>
+
+        <a href="/analytics">
+            Analytics
+        </a>
+
+        <a href="/topper">
+            Top Performer
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <div class="header">
+
+        <small>
+            ACADEMIC EXCELLENCE
+        </small>
+
+        <h1>
+            Top Performer
+        </h1>
+
+        <p>
+            Highest performing student based on academic marks.
+        </p>
+
+    </div>
+
+
+
+    {% if student %}
+
+
+    <!-- TOPPER -->
+
+    <div class="topper-card">
+
+
+        <div class="trophy">
+            🏆
+        </div>
+
+
+        <div class="topper-label">
+            Top Performing Student
+        </div>
+
+
+        <div class="topper-name">
+
+            {{ student.name }}
+
+        </div>
+
+
+
+        <div class="details">
+
+
+            <div class="detail">
+
+                <span>
+                    Roll Number
+                </span>
+
+                <strong>
+                    #{{ student.roll }}
+                </strong>
+
+            </div>
+
+
+
+            <div class="detail">
+
+                <span>
+                    Age
+                </span>
+
+                <strong>
+                    {{ student.age }}
+                </strong>
+
+            </div>
+
+
+
+            <div class="detail">
+
+                <span>
+                    Course
+                </span>
+
+                <strong>
+                    {{ student.course }}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="score">
+
+            <span>
+                HIGHEST SCORE
+            </span>
+
+            <strong>
+                {{ student.marks }}
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    {% else %}
+
+
+    <div class="empty">
+
+        <div>
+            🏆
+        </div>
+
+        <h2>
+            No Student Data
+        </h2>
+
+        <p>
+            Add students to view the top performer.
+        </p>
+
+    </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+
+<footer>
+
+    © 2026 EduTrack — Student Management Portal
+
+</footer>
+
+
+</body>
+
+</html>

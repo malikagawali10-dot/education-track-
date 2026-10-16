@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduTrack | Admin</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 240px;
+            height: 100vh;
+            background: #111827;
+            padding: 25px 15px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 10px;
+            margin-bottom: 35px;
+        }
+
+        .logo span {
+            color: #60a5fa;
+        }
+
+        .menu-title {
+            color: #6b7280;
+            font-size: 11px;
+            margin: 15px 10px;
+        }
+
+        .sidebar a {
+            display: block;
+            text-decoration: none;
+            color: #d1d5db;
+            padding: 13px;
+            margin: 5px 0;
+            border-radius: 8px;
+        }
+
+        .sidebar a:hover {
+            background: #1f2937;
+            color: white;
+        }
+
+        .sidebar a.active {
+            background: #2563eb;
+            color: white;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin-top: 30px;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 6px 25px #0000000d;
+        }
+
+        .profile {
+            text-align: center;
+            font-size: 70px;
+        }
+
+        .name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .role {
+            text-align: center;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+
+        .info {
+            margin-top: 25px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .label {
+            color: #6b7280;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="sidebar">
+
+    <div class="logo">
+        🎓 Edu<span>Track</span>
+    </div>
+
+
+    <div class="menu-title">
+        MAIN MENU
+    </div>
+
+
+    <a href="/">
+        🏠 Dashboard
+    </a>
+
+
+    <a href="/students">
+        👨‍🎓 Students
+    </a>
+
+
+    <a href="/topper">
+        🏆 Topper
+    </a>
+
+
+    <a href="/analytics">
+        📊 Analytics
+    </a>
+
+
+    <div class="menu-title">
+        SYSTEM
+    </div>
+
+
+    <a href="/admin" class="active">
+        ⚙️ Admin
+    </a>
+
+</div>
+
+
+
+<div class="main">
+
+    <h1>
+        ⚙️ Admin Panel
+    </h1>
+
+    <p style="color:#6b7280; margin-top:8px;">
+        Administrator information
+    </p>
+
+
+    <div class="card">
+
+        <div class="profile">
+            👤
+        </div>
+
+        <div class="name">
+            Admin
+        </div>
+
+        <div class="role">
+            Student Management Administrator
+        </div>
+
+
+        <div class="info">
+
+
+            <div class="row">
+
+                <span class="label">
+                    System
+                </span>
+
+                <b>
+                    EduTrack
+                </b>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Total Students
+                </span>
+
+                <b>
+                    {{ students|length }}
+                </b>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="label">
+                    Status
+                </span>
+
+                <b>
+                    Active
+                </b>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Dashboard | EduTrack</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+    height:72px;
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 7%;
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    color:#1e3a8a;
+
+    font-size:21px;
+    font-weight:700;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:linear-gradient(
+        135deg,
+        #4f46e5,
+        #2563eb
+    );
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+
+    color:#667085;
+
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#4f46e5;
+}
+
+
+/* PAGE */
+
+.page{
+    padding:45px 7%;
+}
+
+
+/* HEADER */
+
+.header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:30px;
+}
+
+.header h1{
+    font-size:32px;
+}
+
+.header p{
+    margin-top:7px;
+
+    color:#7b8494;
+
+    font-size:14px;
+}
+
+
+/* ADMIN PROFILE */
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.avatar{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:#eef2ff;
+
+    color:#4f46e5;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+}
+
+.profile-name{
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.profile-role{
+
+    font-size:11px;
+
+    color:#98a2b3;
+
+    margin-top:3px;
+}
+
+
+/* STATS */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:18px;
+}
+
+.stat-card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:14px;
+
+    padding:24px;
+
+}
+
+.stat-icon{
+
+    width:43px;
+    height:43px;
+
+    border-radius:10px;
+
+    background:#eef2ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:20px;
+
+    margin-bottom:17px;
+}
+
+.stat-card p{
+
+    color:#7b8494;
+
+    font-size:12px;
+
+}
+
+.stat-card h2{
+
+    margin-top:7px;
+
+    font-size:27px;
+
+}
+
+
+/* MAIN GRID */
+
+.main-grid{
+
+    margin-top:25px;
+
+    display:grid;
+
+    grid-template-columns:
+    1.5fr 1fr;
+
+    gap:20px;
+
+}
+
+
+/* CARD */
+
+.card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:14px;
+
+    padding:27px;
+
+}
+
+.card h2{
+
+    font-size:18px;
+
+}
+
+.card-subtitle{
+
+    color:#98a2b3;
+
+    font-size:12px;
+
+    margin-top:5px;
+
+}
+
+
+/* QUICK ACTION */
+
+.action{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:17px 0;
+
+    border-bottom:1px solid #edf0f4;
+
+    text-decoration:none;
+
+    color:#172033;
+}
+
+.action:last-child{
+
+    border-bottom:none;
+
+}
+
+.action-icon{
+
+    width:42px;
+    height:42px;
+
+    border-radius:10px;
+
+    background:#eef2ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.action-title{
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.action-text{
+
+    color:#98a2b3;
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+
+/* RECENT STUDENTS */
+
+.student{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #edf0f4;
+}
+
+.student:last-child{
+
+    border-bottom:none;
+}
+
+.student-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.student-avatar{
+
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:#f1f5f9;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+.student-name{
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.student-course{
+
+    font-size:11px;
+
+    color:#98a2b3;
+
+    margin-top:3px;
+}
+
+.student-mark{
+
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#4f46e5;
+}
+
+
+/* SYSTEM */
+
+.system{
+
+    margin-top:20px;
+
+    background:#111827;
+
+    color:white;
+
+    border-radius:14px;
+
+    padding:25px;
+}
+
+.system h2{
+
+    font-size:17px;
+
+}
+
+.system p{
+
+    color:#9ca3af;
+
+    font-size:12px;
+
+    margin-top:5px;
+}
+
+.system-info{
+
+    margin-top:18px;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:10px;
+}
+
+.system-box{
+
+    background:#1f2937;
+
+    padding:14px;
+
+    border-radius:9px;
+}
+
+.system-box span{
+
+    display:block;
+
+    color:#9ca3af;
+
+    font-size:10px;
+}
+
+.system-box strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:13px;
+}
+
+
+/* FOOTER */
+
+footer{
+
+    margin-top:45px;
+
+    background:#111827;
+
+    color:#9ca3af;
+
+    padding:25px;
+
+    text-align:center;
+
+    font-size:12px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .stats{
+
+        grid-template-columns:
+        1fr 1fr;
+
+    }
+
+    .main-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .nav-links{
+
+        display:none;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .header{
+
+        align-items:flex-start;
+
+        gap:20px;
+
+        flex-direction:column;
+
+    }
+
+    .system-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+        EduTrack
+
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/students">
+            Students
+        </a>
+
+        <a href="/analytics">
+            Analytics
+        </a>
+
+        <a href="/topper">
+            Top Performer
+        </a>
+
+        <a href="/admin">
+            Admin
+        </a>
+
+    </div>
+
+
+</nav>
+
+
+
+<!-- PAGE -->
+
+<main class="page">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+
+        <div>
+
+            <h1>
+                Admin Dashboard
+            </h1>
+
+            <p>
+                Manage student records and monitor academic activity.
+            </p>
+
+        </div>
+
+
+
+        <div class="profile">
+
+            <div class="avatar">
+                A
+            </div>
+
+            <div>
+
+                <div class="profile-name">
+                    Administrator
+                </div>
+
+                <div class="profile-role">
+                    System Admin
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👨‍🎓
+            </div>
+
+            <p>
+                Total Students
+            </p>
+
+            <h2>
+                {{ total }}
+            </h2>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📊
+            </div>
+
+            <p>
+                Average Marks
+            </p>
+
+            <h2>
+                {{ "%.1f"|format(average) }}%
+            </h2>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🏆
+            </div>
+
+            <p>
+                Highest Score
+            </p>
+
+            <h2>
+                {{ highest }}
+            </h2>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📈
+            </div>
+
+            <p>
+                Active Records
+            </p>
+
+            <h2>
+                {{ total }}
+            </h2>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- MAIN GRID -->
+
+    <section class="main-grid">
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="card">
+
+            <h2>
+                Quick Management
+            </h2>
+
+            <p class="card-subtitle">
+                Frequently used administrative actions
+            </p>
+
+
+
+            <a
+                href="/students"
+                class="action"
+            >
+
+                <div class="action-icon">
+                    👨‍🎓
+                </div>
+
+                <div>
+
+                    <div class="action-title">
+                        Manage Students
+                    </div>
+
+                    <div class="action-text">
+                        View, search and manage student records
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/add"
+                class="action"
+            >
+
+                <div class="action-icon">
+                    ➕
+                </div>
+
+                <div>
+
+                    <div class="action-title">
+                        Add Student
+                    </div>
+
+                    <div class="action-text">
+                        Register a new student
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/analytics"
+                class="action"
+            >
+
+                <div class="action-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <div class="action-title">
+                        View Analytics
+                    </div>
+
+                    <div class="action-text">
+                        Check academic performance statistics
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/topper"
+                class="action"
+            >
+
+                <div class="action-icon">
+                    🏆
+                </div>
+
+                <div>
+
+                    <div class="action-title">
+                        Top Performer
+                    </div>
+
+                    <div class="action-text">
+                        View highest performing student
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- RECENT STUDENTS -->
+
+        <div class="card">
+
+            <h2>
+                Recent Students
+            </h2>
+
+            <p class="card-subtitle">
+                Latest registered records
+            </p>
+
+
+            {% if students %}
+
+
+                {% for student in students[-5:]|reverse %}
+
+
+                <div class="student">
+
+
+                    <div class="student-left">
+
+
+                        <div class="student-avatar">
+
+                            {{ student.name[0]|upper }}
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="student-name">
+
+                                {{ student.name }}
+
+                            </div>
+
+                            <div class="student-course">
+
+                                {{ student.course }}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="student-mark">
+
+                        {{ student.marks }}
+
+                    </div>
+
+
+                </div>
+
+
+                {% endfor %}
+
+
+            {% else %}
+
+                <p style="margin-top:25px;color:#98a2b3;">
+                    No students available.
+                </p>
+
+            {% endif %}
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- SYSTEM -->
+
+    <section class="system">
+
+        <h2>
+            System Overview
+        </h2>
+
+        <p>
+            EduTrack Student Management Portal
+        </p>
+
+
+        <div class="system-info">
+
+
+            <div class="system-box">
+
+                <span>
+                    Database
+                </span>
+
+                <strong>
+                    students.json
+                </strong>
+
+            </div>
+
+
+            <div class="system-box">
+
+                <span>
+                    Application
+                </span>
+
+                <strong>
+                    Flask / Python
+                </strong>
+
+            </div>
+
+
+            <div class="system-box">
+
+                <span>
+                    Status
+                </span>
+
+                <strong>
+                    ● Online
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    © 2026 EduTrack — Student Management Portal
+
+</footer>
+
+
+</body>
+
+</html>
+</body>
+
+</html>

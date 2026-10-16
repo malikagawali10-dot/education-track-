@@ -1,0 +1,23 @@
+[
+    {
+        "roll": "2",
+        "name": "Mayuri",
+        "age": "21",
+        "course": "BBA(CA)",
+        "marks": 40.69
+    },
+    {
+        "roll": "4",
+        "name": "Vivek",
+        "age": "20",
+        "course": "BBA(CA)",
+        "marks": 77.84
+    },
+    {
+        "roll": "2",
+        "name": "Malika",
+        "age": "20",
+        "course": "BBA(CA)",
+        "marks": 89.0
+    }
+]
